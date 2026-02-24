@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajlok Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.9;
+            padding: 15px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        /* Background Logo */
+        .background-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            z-index: 0;
+            opacity: 0.08;
+            filter: blur(3px);
+            pointer-events: none;
+        }
+
+        .background-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #1a5fb4;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a5fb4, #3584e4, #62a0ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(26, 95, 180, 0.2);
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+        }
+
+        .header .tagline {
+            font-size: 0.9rem;
+            color: #1a5fb4;
+            margin-top: 8px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .welcome-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            margin: 25px 0;
+            padding: 18px;
+            background: linear-gradient(90deg, #e8f0fe, #d0e3ff);
+            border-radius: 10px;
+            border-left: 5px solid #1a5fb4;
+            border-right: 5px solid #1a5fb4;
+            box-shadow: 0 4px 15px rgba(26, 95, 180, 0.15);
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .content p {
+            margin-bottom: 18px;
+            text-indent: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content p::first-letter {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a5fb4;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a5fb4, #3584e4);
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(26, 95, 180, 0.3);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #1a5fb4;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button:hover {
+            background-color: #f0f4f8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e8f0;
+            font-style: italic;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin-bottom: 12px;
+        }
+
+        .footer-signature {
+            color: #1a5fb4;
+            font-weight: 600;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .decoration-top-left {
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #1a5fb4, transparent);
+            border-radius: 0 0 100% 0;
+        }
+
+        .decoration-bottom-right {
+            bottom: 10px;
+            right: 10px;
+            background: linear-gradient(-135deg, #1a5fb4, transparent);
+            border-radius: 100% 0 0 0;
+        }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .background-logo {
+                width: 300px;
+                height: 300px;
+                filter: blur(2px);
+            }
+
+            .container {
+                padding: 20px 15px;
+                border-radius: 12px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+
+            .header .tagline {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+            }
+
+            .welcome-text {
+                font-size: 1.15rem;
+                padding: 14px;
+                margin: 18px 0;
+            }
+
+            .content {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .content p {
+                text-indent: 18px;
+                margin-bottom: 14px;
+            }
+
+            .contact-info {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .contact-info p {
+                font-size: 1rem;
+            }
+
+            .contact-button {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+
+            .footer {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tablet optimizations */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .background-logo {
+                width: 400px;
+                height: 400px;
+            }
+
+            .container {
+                padding: 30px 25px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-text {
+                font-size: 1.35rem;
+            }
+
+            .content {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 769px) {
+            .background-logo {
+                width: 600px;
+                height: 600px;
+            }
+
+            .container {
+                max-width: 900px;
+                padding: 45px 40px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1.6rem;
+                padding: 22px;
+            }
+
+            .content {
+                font-size: 1.1rem;
+            }
+
+            .content p {
+                text-indent: 35px;
+                margin-bottom: 22px;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        a, button {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for welcome text */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .welcome-text {
+            animation: pulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Logo -->
+    <div class="background-logo">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Building Icon -->
+            <g fill="#1a5fb4">
+                <!-- Main Building -->
+                <rect x="40" y="60" width="120" height="100" rx="3"/>
+                <!-- Roof -->
+                <polygon points="100,20 20,60 180,60"/>
+                <!-- Windows Row 1 -->
+                <rect x="55" y="75" width="25" height="20" rx="2" fill="#fff"/>
+                <rect x="87" y="75" width="25" height="20" rx="2" fill="#fff"/>
+                <rect x="120" y="75" width="25" height="20" rx="2" fill="#fff"/>
+                <!-- Windows Row 2 -->
+                <rect x="55" y="105" width="25" height="20" rx="2" fill="#fff"/>
+                <rect x="87" y="105" width="25" height="20" rx="2" fill="#fff"/>
+                <rect x="120" y="105" width="25" height="20" rx="2" fill="#fff"/>
+                <!-- Door -->
+                <rect x="85" y="135" width="30" height="25" rx="2" fill="#fff"/>
+                <!-- Foundation -->
+                <rect x="30" y="160" width="140" height="10" rx="2"/>
+                <!-- Stars -->
+                <polygon points="100,5 102,10 107,10 103,13 105,18 100,15 95,18 97,13 93,10 98,10" fill="#3584e4"/>
+                <!-- Decorative elements -->
+                <circle cx="25" cy="50" r="5" fill="#62a0ea"/>
+                <circle cx="175" cy="50" r="5" fill="#62a0ea"/>
+                <circle cx="15" cy="100" r="3" fill="#62a0ea"/>
+                <circle cx="185" cy="100" r="3" fill="#62a0ea"/>
+            </g>
+            <!-- Text "RP" -->
+            <text x="100" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#1a5fb4">RP</text>
+        </svg>
+    </div>
+
+    <!-- Decorative corners -->
+    <div class="decoration decoration-top-left"></div>
+    <div class="decoration decoration-bottom-right"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Rajlok Properties 🏠</h1>
+            <p class="tagline">Your Trusted Real Estate Partner</p>
+        </div>
+
+        <div class="welcome-text">
+            always welcome in rajlok properties
+        </div>
+
+        <div class="content">
+            <p>Dear Users,</p>
+
+            <p>Welcome to the official digital presence of Rajlok Properties, a premium and emerging real estate service provider based in Burari, Delhi. We are pleased to introduce Rajlok Properties as a trustworthy destination for all your property-related needs, operating with a strong commitment to transparency, professionalism, and long-term client satisfaction. This venture is proudly led by Mr. Santosh Kumar Jha, in professional association with his valued partner Mr. Vijay Yadav, whose combined vision and dedication aim to deliver reliable and customer-focused real estate solutions in the rapidly developing region near Jharoda, Milan Vihar, Gali Number 3, Burari, Delhi.</p>
+
+            <p>Established in February, Rajlok Properties may be a new name in the market, but its foundation is built on strong values, clear intentions, and a premium service mindset. Mr. Santosh Kumar Jha, the driving force behind the firm, is widely recognized for his honest dealing, practical understanding of local property trends, and his sincere commitment to helping clients make confident property decisions. His approach is simple yet powerful — to treat every client with respect, guide them with clarity, and ensure that every transaction is handled smoothly and transparently. Supporting the growth of this venture is his respected partner, Mr. Vijay Yadav, whose professional involvement strengthens the firm's operational capabilities and future expansion vision.</p>
+
+            <p>Behind every successful venture stands a supportive family, and Rajlok Properties is no exception. Mr. Santosh Kumar Jha is strongly supported by his wife, Mrs. Kumkum Jha, whose encouragement and moral support play a meaningful role in the steady progress of the business. The family's unity and positive outlook are further reflected through their children. His sons, Mr. Alok Kumar Jha and Mr. Aman Kumar Jha, represent the energy and modern thinking of the new generation, aligning well with the evolving demands of today's real estate environment. Alongside them, Ms. Arpita Jha, the daughter of the family, symbolizes the strength, balance, and progressive values that the Jha family proudly carries forward. Together, the family forms a strong motivational backbone behind Rajlok Properties.</p>
+
+            <p>Rajlok Properties has been established with a clear and focused mission — to provide dependable, transparent, and customer-friendly property solutions under one roof. The firm offers a wide range of real estate services designed to meet the diverse needs of clients in and around Burari. Our key services include property buying, property selling, rental assistance, plot dealing, flats, floors, and collaboration projects. Whether you are a first-time buyer, an investor, a property owner looking to sell, or someone searching for the right rental option, Rajlok Properties aims to guide you at every step with honesty and professional care.</p>
+
+            <p>The office location near Jharoda, Milan Vihar, Gali Number 3, Burari, Delhi, has been strategically chosen to serve the fast-growing property market of the surrounding areas. The firm understands that real estate decisions are not just financial transactions but important life decisions, and therefore every client interaction is handled with patience, clarity, and a premium service attitude. Even though the journey of Rajlok Properties has recently begun in February, the vision is long-term — to build a name that people trust without hesitation.</p>
+
+            <p>At Rajlok Properties, customer satisfaction is not just a goal; it is a daily working principle. Every visitor is welcomed with personal attention, and every requirement is carefully understood before offering guidance. The management believes that transparency builds confidence, and confidence builds lasting relationships. Step by step, with dedication and consistent effort, Rajlok Properties is moving forward toward becoming a recognized and dependable name in the Burari real estate market.</p>
+
+            <p>As the firm continues to grow, the focus remains on improving service quality, understanding market movements, and expanding professional reach while maintaining the core values of honesty and reliability. With the combined efforts of Mr. Santosh Kumar Jha, his partner Mr. Vijay Yadav, and the strong support of the Jha family, Rajlok Properties is confidently progressing toward a bright and successful future in the real estate sector.</p>
+
+            <p>For inquiries, property assistance, or any real estate consultation, you are always welcome to connect with us.</p>
+        </div>
+
+        <div class="contact-info">
+            <p>📍 Burari, Delhi</p>
+            <p>📞 Contact Number: 97170-66353</p>
+            <a href="tel:9717066353" class="contact-button">📞 Call Now</a>
+        </div>
+
+        <div class="footer">
+            <p>We sincerely thank you for visiting Rajlok Properties. Your trust inspires us to serve you better every day. We look forward to building a long and valuable professional relationship with you.</p>
+            <p class="footer-signature">Warm regards,<br>Team Rajlok Properties 🚀</p>
+        </div>
+    </div>
+</body>
+</html>
